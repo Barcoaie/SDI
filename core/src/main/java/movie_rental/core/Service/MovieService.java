@@ -1,6 +1,7 @@
 package movie_rental.core.Service;
 
 import movie_rental.core.Model.Movie;
+import movie_rental.core.Repository.MovieRepository;
 
 import java.util.List;
 
