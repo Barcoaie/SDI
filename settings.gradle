@@ -1,2 +1,4 @@
 rootProject.name = '921_lab11_angularspringjpa'
+include 'core'
+include 'web'
 
