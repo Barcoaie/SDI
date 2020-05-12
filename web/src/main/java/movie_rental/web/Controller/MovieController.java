@@ -1,5 +1,6 @@
 package movie_rental.web.Controller;
 
+import movie_rental.core.Model.Movie;
 import movie_rental.core.Service.MovieService;
 import movie_rental.web.Converter.MovieConverter;
 import movie_rental.web.Dto.MovieDto;
@@ -10,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class MovieController {
@@ -22,12 +26,12 @@ public class MovieController {
     private MovieConverter movieConverter;
 
     @RequestMapping(value = "/movies", method = RequestMethod.GET)
-    MoviesDto getAllMovies() {
+    public List<MovieDto> getMovies() {
         log.trace("getAllMovies - method entered");
-        MoviesDto allMovies = new MoviesDto(movieConverter.convertModelsToDtos(movieService.getAllMovies(1, "title")));
-        log.trace("getAllMovies - moviesDto = {}", allMovies);
+        List<Movie> movies = movieService.getAllMovies(1, "title");
+        log.trace("getAllMovies - moviesDto = {}", movies);
         log.trace("getAllMovies - method finished");
-        return allMovies;
+        return new ArrayList<>(movieConverter.convertModelsToDtos(movies));
     }
 
 
@@ -42,7 +46,7 @@ public class MovieController {
     }
 
     @RequestMapping(value = "/movies/{id}", method = RequestMethod.PUT)
-    MovieDto updateMovie(@PathVariable Long id,
+    public MovieDto updateMovie(@PathVariable Long id,
                            @RequestBody MovieDto movieDto) {
         log.trace("updateMovie - method entered");
         MovieDto result = movieConverter.convertModelToDto(

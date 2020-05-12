@@ -1,5 +1,6 @@
 package movie_rental.web.Controller;
 
+import movie_rental.core.Model.Rental;
 import movie_rental.core.Service.RentalServ;
 import movie_rental.web.Converter.RentalConverter;
 import movie_rental.web.Dto.RentalDto;
@@ -10,6 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 public class RentalController {
@@ -22,12 +27,12 @@ public class RentalController {
     private RentalConverter rentalConverter;
 
     @RequestMapping(value = "/rentals", method = RequestMethod.GET)
-    RentalsDto getAllRentals() {
+    public List<RentalDto> getRentals() {
         log.trace("getAllRentals - method entered");
-        RentalsDto allRentals = new RentalsDto(rentalConverter.convertModelsToDtos(rentalServ.getAllRentals()));
-        log.trace("getAllRentals - rentalDtos = {}", allRentals);
+        List<Rental> rentals = new ArrayList<>(rentalServ.getAllRentals());
+        log.trace("getAllRentals - rentalDtos = {}", rentals);
         log.trace("getAllRentals - method finished");
-        return allRentals;
+        return new ArrayList<>(rentalConverter.convertModelsToDtos(rentals));
     }
 
     @RequestMapping(value = "/rentals", method = RequestMethod.POST)
@@ -49,7 +54,7 @@ public class RentalController {
     }
 
     @RequestMapping(value = "/rentals/{id}", method = RequestMethod.PUT)
-    RentalDto updateRental(@PathVariable long id, @RequestBody RentalDto rentalDto) {
+    public RentalDto updateRental(@PathVariable long id, @RequestBody RentalDto rentalDto) {
         log.trace("updateRental - method entered");
         RentalDto result = rentalConverter.convertModelToDto(
                 rentalServ.updateRent(id, rentalConverter.convertDtoToModel(rentalDto)));

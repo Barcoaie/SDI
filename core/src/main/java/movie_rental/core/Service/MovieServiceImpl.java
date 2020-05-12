@@ -47,6 +47,7 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
+    @Transactional
     public void deleteById(Long id) {
         log.trace("deleteById - method entered: id = {}", id);
         log.debug("deleteById - movie deleted: movie = {}", this.movieRepository.findById(id));
