@@ -44,6 +44,7 @@ public class RentalServImpl implements RentalServ {
     }
 
     @Override
+    @Transactional
     public void deleteRent(long id) {
         log.trace("deleteRent - method entered");
         rentalRepository.deleteById(id);

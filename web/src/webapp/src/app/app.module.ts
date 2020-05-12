@@ -9,6 +9,14 @@ import {ClientDetailComponent} from "./clients/client-detail/client-detail.compo
 import {ClientsComponent} from "./clients/clients.component";
 import {ClientListComponent} from "./clients/client-list/client-list.component";
 import {ClientService} from "./clients/shared/client.service";
+import {MovieDetailComponent} from "./movies/movie-detail/movie-detail.component";
+import {MoviesComponent} from "./movies/movies.component";
+import {MovieListComponent} from "./movies/movie-list/movie-list.component";
+import {MovieService} from "./movies/shared/movie.service";
+import {RentalDetailComponent} from "./rentals/rental-detail/rental-detail.component";
+import {RentalsComponent} from "./rentals/rentals.component";
+import {RentalListComponent} from "./rentals/rental-list/rental-list.component";
+import {RentalService} from "./rentals/shared/rental.service";
 
 
 @NgModule({
@@ -17,9 +25,12 @@ import {ClientService} from "./clients/shared/client.service";
     ClientDetailComponent,
     ClientsComponent,
     ClientListComponent,
-
-
-
+    MovieDetailComponent,
+    MoviesComponent,
+    MovieListComponent,
+    RentalDetailComponent,
+    RentalsComponent,
+    RentalListComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,7 +38,7 @@ import {ClientService} from "./clients/shared/client.service";
     HttpClientModule,
     AppRoutingModule,
   ],
-  providers: [ClientService,],
+  providers: [ClientService,MovieService,RentalService,],
   bootstrap: [AppComponent]
 })
 export class AppModule {

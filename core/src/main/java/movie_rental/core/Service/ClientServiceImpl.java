@@ -62,6 +62,7 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
+    @Transactional
     public void deleteClient(Long id) {
         log.trace("deleteClient - method entered: id = {}", id);
         log.debug("deleteClient - client deleted: client = {}", this.clientRepository.findById(id));
