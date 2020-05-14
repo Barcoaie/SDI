@@ -1,0 +1,15 @@
+<div *ngIf="selectedRental">
+  <h2>
+    {{selectedRental.client.name | uppercase}} - {{selectedRental.movie.title | uppercase}} was selected
+  </h2>
+  <button (click)="gotoDetail()">View Details</button>
+</div>
+
+<h2>Rentals</h2>
+<ol class="rentals">
+  <li *ngFor="let rental of rentals "
+      [class.selected]="rental === selectedRental"
+      (click)="onSelect(rental)">
+    {{rental.client.name}} - {{rental.movie.title}}
+  </li>
+</ol>
