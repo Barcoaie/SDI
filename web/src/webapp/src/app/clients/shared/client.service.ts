@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 
 import {HttpClient} from "@angular/common/http";
-
 import {Client} from "./client.model";
 
 import {Observable} from "rxjs";
@@ -31,6 +30,18 @@ export class ClientService {
     const url = `${this.clientsUrl}/${client.id}`;
     return this.httpClient
       .put<Client>(url, client);
+  }
+
+  save(client): Observable<Client> {
+    console.log("save", client);
+    return this.httpClient
+      .post<Client>(this.clientsUrl, client);
+  }
+
+  delete(id: number): Observable<any> {
+    const url = `${this.clientsUrl}/${id}`;
+    return this.httpClient
+      .delete(url);
   }
 
 }

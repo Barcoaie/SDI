@@ -33,4 +33,15 @@ export class MovieService {
       .put<Movie>(url, movie);
   }
 
+  save(movie): Observable<Movie> {
+      console.log("save", movie);
+      return this.httpClient
+        .post<Movie>(this.moviesUrl, movie);
+    }
+
+    delete(id: number): Observable<any> {
+      const url = `${this.moviesUrl}/${id}`;
+      return this.httpClient
+        .delete(url);
+    }
 }

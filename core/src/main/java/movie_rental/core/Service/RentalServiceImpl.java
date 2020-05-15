@@ -23,8 +23,8 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @Service
-public class RentalServImpl implements RentalServ {
-    public static final Logger log = LoggerFactory.getLogger(RentalServImpl.class);
+public class RentalServiceImpl implements RentalService {
+    public static final Logger log = LoggerFactory.getLogger(RentalServiceImpl.class);
     @Autowired
     private ClientRepository clientRepository;
     @Autowired
@@ -34,10 +34,8 @@ public class RentalServImpl implements RentalServ {
 
     public Rental rent(long cid, long mid, String date){
         log.trace("rent - method entered: cid = {}, mid = {}, date = {}", cid, mid, date);
-        Optional.of(clientRepository.findById(cid)).orElseThrow(() -> new ValidatorException("Invalid client"));
-        Optional.of(movieRepository.findById(mid)).orElseThrow(() -> new ValidatorException("Invalid movie"));
-        Client client = this.clientRepository.findById(cid).get();
-        Movie movie = this.movieRepository.findById(mid).get();
+        Client client = Optional.of(clientRepository.findById(cid)).get().orElseThrow(() -> new ValidatorException("Invalid client"));
+        Movie movie = Optional.of(movieRepository.findById(mid)).get().orElseThrow(() -> new ValidatorException("Invalid movie"));
         Rental result = this.rentalRepository.save(new Rental(movie,client,date));
         log.trace("rent - method finished");
         return result;

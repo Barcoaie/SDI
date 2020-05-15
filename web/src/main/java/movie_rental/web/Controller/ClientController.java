@@ -35,7 +35,7 @@ public class ClientController {
     }
 
     @RequestMapping(value = "/clients", method = RequestMethod.POST)
-    ClientDto saveClient(@RequestBody ClientDto clientDto) {
+    public ClientDto saveClient(@RequestBody ClientDto clientDto) {
         log.trace("saveClient - method entered");
         ClientDto result = clientConverter.convertModelToDto(clientService.saveClient(
                 clientConverter.convertDtoToModel(clientDto)));
