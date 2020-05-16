@@ -33,4 +33,16 @@ export class RentalService {
       .put<Rental>(url, rental);
   }
 
+  save(rental): Observable<Rental> {
+    console.log("save", rental);
+    return this.httpClient
+      .post<Rental>(this.rentalsUrl, rental);
+  }
+
+  delete(id: number): Observable<any> {
+    const url = `${this.rentalsUrl}/${id}`;
+    return this.httpClient
+      .delete(url);
+  }
+
 }

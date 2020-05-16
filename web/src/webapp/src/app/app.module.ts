@@ -17,6 +17,9 @@ import {RentalDetailComponent} from "./rentals/rental-detail/rental-detail.compo
 import {RentalsComponent} from "./rentals/rentals.component";
 import {RentalListComponent} from "./rentals/rental-list/rental-list.component";
 import {RentalService} from "./rentals/shared/rental.service";
+import {ClientNewComponent} from "./clients/client-new/client-new.component";
+import {MovieNewComponent} from "./movies/movie-new/movie-new.component";
+import {RentalNewComponent} from "./rentals/rental-new/rental-new.component";
 
 
 @NgModule({
@@ -31,6 +34,9 @@ import {RentalService} from "./rentals/shared/rental.service";
     RentalDetailComponent,
     RentalsComponent,
     RentalListComponent,
+    ClientNewComponent,
+    MovieNewComponent,
+    RentalNewComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,19 @@
+<label>Movie</label> <br/>
+<label>   ID: <input #rentalmid/> <br/>
+</label>
+<label>   Title: <input #rentaltitle/> <br/>
+</label>
+<label>   Description: <input #rentaldescription/> <br/>
+</label>
+<br/>
+<label>Client</label> <br/>
+<label>   ID: <input #rentalcid/> <br/>
+</label>
+<label>   Name: <input #rentalname/> <br/>
+</label>
+<label>   Cnp: <input #rentalcnp> <br/>
+</label>
+<br/>
+<label>Date: <input #rentaldate/> <br/>
+</label>
+<button (click)="rent(rentalmid.value, rentaltitle.value, rentaldescription.value, rentalcid.value, rentalname.value, rentalcnp.value, rentaldate.value)">Save</button>

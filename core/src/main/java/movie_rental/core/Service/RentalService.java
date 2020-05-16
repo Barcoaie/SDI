@@ -7,7 +7,7 @@ import movie_rental.core.Repository.RentalRepository;
 
 import java.util.Set;
 
-public interface RentalServ {
+public interface RentalService {
     Rental rent(long cid, long mid, String date);
     void deleteRent(long id);
     Rental updateRent(long id, Rental rental);

@@ -36,7 +36,7 @@ public class MovieController {
 
 
     @RequestMapping(value = "/movies", method = RequestMethod.POST)
-    MovieDto saveMovie(@RequestBody MovieDto movieDto) {
+    public MovieDto saveMovie(@RequestBody MovieDto movieDto) {
         log.trace("saveMovie - method entered");
         MovieDto result = movieConverter.convertModelToDto(
                 movieService.saveMovie(movieConverter.convertDtoToModel(movieDto)));
