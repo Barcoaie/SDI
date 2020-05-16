@@ -44,7 +44,7 @@ public class RentalController {
     }
 
     @RequestMapping(value = "/rentals/{id}", method = RequestMethod.DELETE)
-    ResponseEntity<?> deleteRental(@PathVariable long id) {
+    public ResponseEntity<?> deleteRental(@PathVariable long id) {
         log.trace("deleteRental - method entered");
         rentalService.deleteRent(id);
         log.trace("deleteRental - method finished");

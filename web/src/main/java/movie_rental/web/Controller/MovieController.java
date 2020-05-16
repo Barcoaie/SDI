@@ -57,7 +57,7 @@ public class MovieController {
     }
 
     @RequestMapping(value = "/movies/{id}", method = RequestMethod.DELETE)
-    ResponseEntity<?> deleteMovie(@PathVariable Long id) {
+    public ResponseEntity<?> deleteMovie(@PathVariable Long id) {
         log.trace("deleteMovie - method entered");
         movieService.deleteById(id);
         log.trace("movie deleted - movieID = {}", id);

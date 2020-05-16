@@ -39,4 +39,13 @@ export class MovieListComponent implements OnInit {
     this.router.navigate(['/movie/detail', this.selectedMovie.id]);
   }
 
+  deleteMovie(movie: Movie) {
+    console.log("deleting movie: ", movie);
+
+    this.movieService.delete(movie.id)
+      .subscribe(_ => {
+        console.log("movie deleted");
+        this.movies = this.movies.filter(m => m.id !== movie.id);
+      });
+  }
 }

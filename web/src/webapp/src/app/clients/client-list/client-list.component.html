@@ -11,5 +11,8 @@
         [class.selected]="client === selectedClient"
         (click)="onSelect(client)">
         {{client.name}}
+
+        <button [class.delete]="true" (click)="deleteClient(client);$event.stopPropagation()">Delete client
+        </button>
     </li>
 </ol>
