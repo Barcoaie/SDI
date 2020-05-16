@@ -56,7 +56,7 @@ public class ClientController {
     }
 
     @RequestMapping(value = "/clients/{id}", method = RequestMethod.DELETE)
-    ResponseEntity<?> deleteClient(@PathVariable Long id) {
+    public ResponseEntity<?> deleteClient(@PathVariable Long id) {
         log.trace("deleteClient - method entered");
         clientService.deleteClient(id);
         log.trace("client deleted - clientID = {}", id);

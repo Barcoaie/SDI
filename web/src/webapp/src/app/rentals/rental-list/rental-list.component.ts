@@ -39,4 +39,14 @@ export class RentalListComponent implements OnInit {
     this.router.navigate(['/rental/detail', this.selectedRental.id]);
   }
 
+  deleteRental(rental: Rental) {
+    console.log("deleting rental: ", rental);
+
+    this.rentalService.delete(rental.id)
+      .subscribe(_ => {
+        console.log("rental deleted");
+        this.rentals = this.rentals.filter(r => r.id !== rental.id);
+      });
+  }
+
 }

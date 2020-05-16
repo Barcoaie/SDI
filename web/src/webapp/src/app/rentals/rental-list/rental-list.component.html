@@ -11,5 +11,8 @@
       [class.selected]="rental === selectedRental"
       (click)="onSelect(rental)">
     {{rental.client.name}} - {{rental.movie.title}}
+
+    <button [class.delete]="true" (click)="deleteRental(rental);$event.stopPropagation()">Delete rental
+    </button>
   </li>
 </ol>

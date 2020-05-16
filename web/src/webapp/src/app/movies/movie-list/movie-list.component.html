@@ -11,5 +11,8 @@
       [class.selected]="movie === selectedMovie"
       (click)="onSelect(movie)">
     {{movie.title}}
+
+    <button [class.delete]="true" (click)="deleteMovie(movie);$event.stopPropagation()">Delete movie
+    </button>
   </li>
 </ol>

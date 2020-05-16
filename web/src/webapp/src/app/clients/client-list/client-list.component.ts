@@ -39,4 +39,14 @@ export class ClientListComponent implements OnInit {
     this.router.navigate(['/client/detail', this.selectedClient.id]);
   }
 
+  deleteClient(client: Client) {
+    console.log("deleting client: ", client);
+
+    this.clientService.delete(client.id)
+      .subscribe(_ => {
+        console.log("client deleted");
+        this.clients = this.clients.filter(c => c.id !== client.id);
+      });
+  }
+
 }
